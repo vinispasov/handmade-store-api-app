@@ -10,6 +10,7 @@ public class Order {
 	private String address;
 	private String city;
 	private List<Item> items;
+	private List<String> itemIds;
 	private double total;
 
 	public Order() {
@@ -88,5 +89,13 @@ public class Order {
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public List<String> getItemIds() {
+		return itemIds;
+	}
+
+	public void setItemIds(List<String> itemIds) {
+		this.itemIds = itemIds;
 	}
 }

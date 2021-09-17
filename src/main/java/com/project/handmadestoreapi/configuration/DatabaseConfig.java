@@ -13,7 +13,7 @@ public class DatabaseConfig {
 
 	private static Firestore FIRESTORE;
 
-	public Firestore getFirestore() {
+	public static Firestore getFirestore() {
 
 		if (FIRESTORE != null) {
 			return FIRESTORE;
@@ -22,7 +22,7 @@ public class DatabaseConfig {
 		FileInputStream serviceAccount;
 		FirebaseOptions options = null;
 		try {
-			serviceAccount = new FileInputStream("C:\\Users\\vinchencospasov\\projects\\handmade-store-api\\src\\main\\resources\\handmade-store-api-firebase-adminsdk-vaerz-7d3c0933fd.json");
+			serviceAccount = new FileInputStream("D:\\Programming\\Repos\\handmade-store-api-app\\src\\main\\resources\\handmade-store-api-firebase-adminsdk-vaerz-7d3c0933fd.json");
 			options = new FirebaseOptions.Builder()
 					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 					.setDatabaseUrl("https://handmade-store-api-default-rtdb.europe-west1.firebasedatabase.app")

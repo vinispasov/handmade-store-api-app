@@ -1,6 +1,7 @@
 package com.project.handmadestoreapi.services;
 
 import com.project.handmadestoreapi.entities.User;
+import com.project.handmadestoreapi.repositories.ItemRepository;
 import com.project.handmadestoreapi.repositories.UserRepository;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
 	private final UserRepository userRepository;
+	private final ItemRepository itemRepository;
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+	public UserService(UserRepository userRepository, ItemRepository itemRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
+		this.itemRepository = itemRepository;
 		this.passwordEncoder = passwordEncoder;
 	}
 
@@ -73,11 +76,12 @@ public class UserService {
 		if (Objects.equals(incomingUser, null)) {
 			return null;
 		}
-		User user = userRepository.getUserByEmail(incomingUser.getEmail());
+		User existingUser = userRepository.getUserByEmail(incomingUser.getEmail());
 
-		if (user != null) {
-			userRepository.updateUser(user);
-			return user;
+		if (existingUser != null) {
+			userRepository.updateUser(incomingUser);
+			incomingUser.setItemsInBasket(itemRepository.getListWithItemsFromIds(incomingUser.getItemIdsInBasket()));
+			return incomingUser;
 		}
 
 		return null;

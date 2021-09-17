@@ -10,6 +10,8 @@ import com.project.handmadestoreapi.configuration.DatabaseConfig;
 import com.project.handmadestoreapi.entities.Item;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -56,4 +58,17 @@ public class ItemRepository {
 		return item;
 	}
 
+	public List<Item> getListWithItemsFromIds (List<String> itemIds) {
+		List<Item> items = new ArrayList<>();
+		itemIds.forEach(itemId -> {
+			try {
+				items.add(databaseConfig.getFirestore()
+						.collection("items")
+						.document(itemId).get().get().toObject(Item.class));
+			} catch (InterruptedException | ExecutionException e) {
+				e.printStackTrace();
+			}
+		});
+		return items;
+	}
 }

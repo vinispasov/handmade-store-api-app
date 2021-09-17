@@ -2,10 +2,15 @@ package com.project.handmadestoreapi.services;
 
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.project.handmadestoreapi.configuration.DatabaseConfig;
+import com.project.handmadestoreapi.entities.Item;
 import com.project.handmadestoreapi.entities.Order;
+import com.project.handmadestoreapi.repositories.ItemRepository;
 import com.project.handmadestoreapi.repositories.OrderRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +19,9 @@ public class OrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
+	private ItemRepository itemRepository;
+
 
 	public List<Order> getAllOrders() {
 
@@ -23,7 +31,7 @@ public class OrderService {
 		if (querySnapshot != null) {
 			orders = querySnapshot.toObjects(Order.class);
 		}
-
+		orders.forEach(order -> order.setItems(itemRepository.getListWithItemsFromIds(order.getItemIds())));
 		return orders;
 	}
 

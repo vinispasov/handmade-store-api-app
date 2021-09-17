@@ -8,6 +8,7 @@ public class User {
 	private String email;
 	private String password;
 	private List<Item> itemsInBasket;
+	private List<String> itemIdsInBasket;
 	private boolean isLoggedIn;
 
 	public User() {
@@ -59,5 +60,13 @@ public class User {
 
 	public void setLoggedIn(boolean loggedIn) {
 		isLoggedIn = loggedIn;
+	}
+
+	public List<String> getItemIdsInBasket() {
+		return itemIdsInBasket;
+	}
+
+	public void setItemIdsInBasket(List<String> itemIdsInBasket) {
+		this.itemIdsInBasket = itemIdsInBasket;
 	}
 }
