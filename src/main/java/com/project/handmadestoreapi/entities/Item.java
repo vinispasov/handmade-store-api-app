@@ -3,7 +3,7 @@ package com.project.handmadestoreapi.entities;
 public class Item {
 
 	private String id;
-	private String name;
+	private String title;
 	private String description;
 	private double price;
 	private boolean isFavorite;
@@ -14,9 +14,9 @@ public class Item {
 	public Item() {
 	}
 
-	public Item(String id, String name, String description, Double price, Boolean isFavorite, Integer quantity, String picture, String category) {
+	public Item(String id, String title, String description, Double price, Boolean isFavorite, Integer quantity, String picture, String category) {
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.description = description;
 		this.price = price;
 		this.isFavorite = isFavorite;
@@ -33,12 +33,12 @@ public class Item {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
