@@ -13,7 +13,9 @@ import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * The {@code OrderService} class represents a service, which perform some business logic for Order entity.
+ */
 @Service
 public class OrderService {
 
@@ -46,6 +48,9 @@ public class OrderService {
 		return null;
 	}
 
+	/**
+	 * The {@code convertToListWithOrders} method receive @param documents, it convert the documents to list with Order entity
+	 */
 	private List<Order> convertToListWithOrders(List<QueryDocumentSnapshot> documents) {
 		List<Order> customerOrders = new ArrayList<>();
 		documents.forEach(document -> customerOrders.add(document.toObject(Order.class)));

@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-
+/**
+ * The {@code ItemRepository} class represents a repository, which is connected with the Item entity representation in the database.
+ */
 @Repository
 public class ItemRepository {
 	private final DatabaseConfig databaseConfig = new DatabaseConfig();
@@ -58,6 +60,11 @@ public class ItemRepository {
 		return item;
 	}
 
+	/**
+	 * The {@code getListWithItemsFromIds} method receive @param itemIds, it takes the list with Item entity from itemIds,
+	 * because there are restrictions in Firestore database and we cannot save list with another entity in the current one.
+	 * That's why we save the itemIds as a list with strings and afterwards we get the actual items from the Item records.
+	 */
 	public List<Item> getListWithItemsFromIds (List<String> itemIds) {
 		List<Item> items = new ArrayList<>();
 		itemIds.forEach(itemId -> {

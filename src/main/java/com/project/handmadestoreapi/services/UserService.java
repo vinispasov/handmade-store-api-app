@@ -7,7 +7,9 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+/**
+ * The {@code UserService} class represents a service, which perform some business logic for User entity.
+ */
 @Service
 public class UserService {
 
@@ -23,6 +25,9 @@ public class UserService {
 	}
 
 
+	/**
+	 * The {@code createUser} method is responsible for the new users registrations.
+	 */
 	public User createUser(User userToCreate) {
 		if (Objects.equals(userToCreate.getPassword(), null)) {
 			throw new RuntimeException();
@@ -70,7 +75,11 @@ public class UserService {
 		return null;
 
 	}
-
+	/**
+	 * The {@code updateBasket} method is responsible for all the interactions with the basket.
+	 * The basket is basically list with items, which is located in the User entity.
+	 * Adding and removing items from the basket goes through this method.(The list inside the User is updated.)
+	 */
 	public User updateBasket(User incomingUser) {
 
 		if (Objects.equals(incomingUser, null)) {

@@ -9,7 +9,9 @@ import com.project.handmadestoreapi.configuration.DatabaseConfig;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Repository;
-
+/**
+ * The {@code OrderRepository} class represents a repository, which is connected with the Order entity representation in the database.
+ */
 @Repository
 public class OrderRepository {
 

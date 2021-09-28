@@ -11,7 +11,9 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Repository;
-
+/**
+ * The {@code UserRepository} class represents a repository, which is connected with the User entity representation in the database.
+ */
 @Repository
 public class UserRepository {
 

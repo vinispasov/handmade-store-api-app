@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The {@code OrderController} class represents an endpoint from where you can interact with the Order entity
+ */
 @RestController
 @RequestMapping("/orders")
 public class OrderController {

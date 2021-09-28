@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The {@code ItemController} class represents an endpoint from where you can interact with the Item entity
+ */
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/items")

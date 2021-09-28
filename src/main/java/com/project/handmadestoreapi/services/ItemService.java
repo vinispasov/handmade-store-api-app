@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code ItemService} class represents a service, which perform some business logic for Item entity.
+ */
 @Service
 public class ItemService {
 
